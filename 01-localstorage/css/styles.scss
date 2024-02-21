@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+$back-color-light:#1c2a39;
+$back-color-dark:#0f1924;
+
+$color1:#56D386;
+$color2:#95C431;
+
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Karla", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+html, 
+body{ 
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: #1e1e1e;
+    background: linear-gradient(0deg,$back-color-dark 0%,$back-color-light 100%,$back-color-light 100%);
+    color: white;
+}
+
+
+
+@mixin mediaQuery($medida:480px){  /* 'function' to make mediaquiery in Scss*/
+    @media(max-width:$medida){
+        @content
+    }
+}
+
+
+
+/*-------------------*/
+
+section{
+    margin: 2rem auto;   
+    width: 70%;
+
+    padding: 2rem;
+    display: flex;
+
+
+
+    @include mediaQuery(){
+        flex-direction: column;
+    }
+
+    @include mediaQuery(960px){
+        flex-direction: column;
+    }
+
+}
+
+
+
+
+.task-input{
+    position: sticky;
+    width: 70%;
+    height: 4rem;
+    padding: 2rem;
+    margin: 2rem;
+
+    display:flex;
+    
+    align-items: center;
+
+    border-image: linear-gradient($color1, $color2) 30;
+    border-width: 7px;
+    border-style: solid;
+    border-radius: 5px;
+
+    textarea{
+        width: 80%;
+        height: 3rem;
+        padding: 0.6rem 1rem;
+        border-radius:  5px;
+        margin-right: 1rem;
+        resize: none;
+    }
+
+    input{
+        padding: 0.5rem;
+        height: 3rem;
+        width: 10%;
+        font-size:large;
+        
+        border-radius: 1px;
+        color: $color1;
+        background-color: $back-color-light;
+        border: 2px solid $color1;
+        cursor: pointer;
+        &:hover{
+            border: none;
+            color: white;
+            background-color: $color1;
+        }
+    }
+}
+
+.task-list{
+    width: 70%;
+    min-height: 500px;
+    padding: 2rem;
+    margin: 2rem;
+
+    
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    word-wrap: break-word;
+
+    border: 2px solid $color1;
+
+    p{
+        padding: 0.5rem 0;
+        margin-left: 10px;
+        flex-grow: 1;
+        overflow-wrap: break-word;
+    }
+
+    button{
+        width: 50px;
+        align-self: stretch;
+
+        font-size: xx-large;
+        border: none;
+        padding: 1rem;
+        color: #1c2a39;
+        background-color: $color1;
+        cursor: pointer;
+        &:hover{
+            color: $color1;
+            background-color: #ffffff00;
+            border-right: 2px solid $color1;
+        }
+    }
+}

@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+html,
+body {
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: #1e1e1e;
+  background: linear-gradient(0deg, #0f1924 0%, #1c2a39 100%, #1c2a39 100%);
+  color: white;
+}
+
+/*-------------------*/
+section {
+  margin: 2rem auto;
+  width: 70%;
+  padding: 2rem;
+  display: flex;
+  /* 'function' to make mediaquiery in Scss*/
+  /* 'function' to make mediaquiery in Scss*/
+}
+@media (max-width: 480px) {
+  section {
+    flex-direction: column;
+  }
+}
+@media (max-width: 960px) {
+  section {
+    flex-direction: column;
+  }
+}
+
+.task-input {
+  position: sticky;
+  width: 70%;
+  height: 4rem;
+  padding: 2rem;
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+  -o-border-image: linear-gradient(#56D386, #95C431) 30;
+     border-image: linear-gradient(#56D386, #95C431) 30;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 5px;
+}
+.task-input textarea {
+  width: 80%;
+  height: 3rem;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  margin-right: 1rem;
+  resize: none;
+}
+.task-input input {
+  padding: 0.5rem;
+  height: 3rem;
+  width: 10%;
+  font-size: large;
+  border-radius: 1px;
+  color: #56D386;
+  background-color: #1c2a39;
+  border: 2px solid #56D386;
+  cursor: pointer;
+}
+.task-input input:hover {
+  border: none;
+  color: white;
+  background-color: #56D386;
+}
+
+.task-list {
+  width: 70%;
+  min-height: 500px;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  word-wrap: break-word;
+  border: 2px solid #56D386;
+}
+.task p {
+  padding: 0.5rem 0;
+  margin-left: 10px;
+  flex-grow: 1;
+  overflow-wrap: break-word;
+}
+.task button {
+  width: 50px;
+  align-self: stretch;
+  font-size: xx-large;
+  border: none;
+  padding: 1rem;
+  color: #1c2a39;
+  background-color: #56D386;
+  cursor: pointer;
+}
+.task button:hover {
+  color: #56D386;
+  background-color: rgba(255, 255, 255, 0);
+  border-right: 2px solid #56D386;
+}/*# sourceMappingURL=styles.css.map */
