@@ -1,103 +1,87 @@
 
-const taskList = document.querySelector("#taskList")
-
-//*--------------- Event Listeners
-
-document.querySelector("#taskForm").addEventListener('submit',(event)=>{
-
-    event.preventDefault()
-    const task = document.querySelector("#taskText").value
-
-    createNewTask(task)
-    addTaskToLS(task)
-
-})
-
-taskList.addEventListener('click',deleteTask)
-
+const tasksContainer = document.querySelector("#taskList")
 
 //* ------------- START
 
 loadTasks()
 
+//*--------------- Event Listeners
+
+const form = document.querySelector("#taskForm")
+
+form.addEventListener('submit',(event)=>{
+    const task = document.querySelector('#taskText').value
+
+    createTaskBox(task)
+
+    addTaskToLS(task)
+})
+
+tasksContainer.addEventListener('click',(event)=>{
+    if(event.target.classList.contains('x')){
+        const task = event.target.parentElement.childNodes[1].innerText
+
+        tasksContainer.removeChild(event.target.parentElement)
+        deleteFromLS(task)
+    }
+})
+
 //*--------------- functions
 
+function createTaskBox(task){
+    const button = document.createElement('button')
+    button.classList = 'x'
+    button.innerText ='x'
 
-function createNewTask(task){
+    const p = document.createElement('p')
+    p.innerText = task
 
-    if(task !== ""){
-        const deleteButton = document.createElement("button")
-        deleteButton.classList = "x"
-        deleteButton.innerText = "x"
-        
-        const taskP = document.createElement('p')
-        taskP.innerText = task
-        
-        const taskBox =   document.createElement("div")
-        taskBox.classList = "task"
-        taskBox.appendChild(deleteButton)
-        taskBox.appendChild(taskP)
-        
-        taskList.appendChild(taskBox)
-        
-        document.querySelector("#taskText").value = ""
-    }
-    else{
-        alert("[ ! ] - Can not enter an ampty task")
-    }
+    const div = document.createElement('div')
+    div.className = 'task'
 
-}
+    div.appendChild(button)
+    div.appendChild(p)
 
-function deleteTask(event) {
-    event.preventDefault()
-    if(event.target.classList.contains("x")){
-        const taskBox = event.target.parentElement
-        taskList.removeChild(taskBox)
-        
-        deleteTaskFromLS(taskBox.childNodes[1].innerText)
-    }
-}
-
- 
-function loadTasks(){
-    let tasks = getTasksFromLS()
-    tasks.forEach(task => {
-        createNewTask(task)
-    });
+    tasksContainer.appendChild(div)
+    
+    document.querySelector('#taskText').value = ''
 }
 
 // ----------------------------- [LocalStorage]
 
-function addTaskToLS(task){
-    const tasks = getTasksFromLS()
-    tasks.push(task)
-
-    localStorage.setItem("tasks",JSON.stringify(tasks))
-} 
-
-
 function getTasksFromLS(){
-    let tasks
-
-    if(localStorage.getItem("tasks") === null){
-        tasks = []
+    if(localStorage.getItem('tasks') === null){
+        return []
     }else{
-        tasks = JSON.parse(localStorage.getItem("tasks"))
+        return JSON.parse(localStorage.getItem('tasks'))
     }
-    return tasks
 }
 
+function addTaskToLS(task){
+    const taskList = getTasksFromLS()
 
-function deleteTaskFromLS(task){
-    let tasks = getTasksFromLS()
+    taskList.push(task)
+    localStorage.setItem('tasks',JSON.stringify(taskList))
 
-    console.log(tasks)
-    tasks.forEach((tsk,index) => {
+    console.log(getTasksFromLS())
+}
+
+function loadTasks(){
+    const taskList = getTasksFromLS()
+
+    taskList.forEach((task) => {
+        createTaskBox(task)
+    });
+}
+
+function deleteFromLS(task){
+    const taskList = getTasksFromLS()
+
+    taskList.forEach((tsk,index) => {
         if(tsk === task){
-            tasks.splice(index,1)
-            
+            taskList.splice(index,1)
         }
     });
 
-    localStorage.setItem("tasks",JSON.stringify(tasks))
+    localStorage.setItem('tasks',JSON.stringify(taskList))
 }
