@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+$color1-light:#FFC1D7;
+$color1-dark:#FF75A7;
+$color2:#DFD8FF;
+$back-color1:#FEF4F8;
+$back-color2:#E7E2FF;
+
+
+
+@mixin mediaQuery($medida:960px){
+    @media (max-width:$medida){
+        @content
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, 
+body{ 
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: $back-color1;
+    background: linear-gradient(0deg,$back-color2 0%,$back-color1 100%);
+}
+
+/*-------------------------------------------------------------------------------------------  [NavBar ] -----  */
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: $back-color1;
+    background: linear-gradient(90deg,$color1-light 0%,$back-color2 100%);
+    
+}
+
+.nav-brand{
+    background-color: $color1-dark;
+    height: 3.5rem;
+    width: 10rem;
+    margin: 1rem;
+
+    border-radius: 2rem;
+
+    i{
+        color: white;
+        margin-left: 40%;
+    }
+}
+
+/*-----------------------------  [Drop] -----  */
+
+
+.cart-btn {
+    background-color: $color1-dark;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-top-left-radius:1.5rem;
+    border-top-right-radius:1.5rem;
+
+}
+  
+/* The container <div> - needed to position the dropdown content */
+.cart {
+    position: relative;
+    display: inline-block;
+    margin-right: 2rem;
+    
+}
+  
+
+.cart-list {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+    .cart-list-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        img{
+            max-width: 60px;
+        }
+        button{
+            align-self: stretch;
+            padding: 1rem;
+            color: white;
+            background-color: $color1-dark;
+            border: none;
+            cursor: pointer;
+            &:hover{
+                background-color: $color1-light;
+            }
+        }
+    }
+}
+
+/* Show the dropdown menu on hover */
+.cart{
+    &:hover .cart-list {
+        display: block;
+    }
+}
+  
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.cart:hover .cart-btn {
+    background-color: $back-color2;
+    color: rgba(0, 0, 0, 0.503);
+}
+
+
+
+
+/*-------------------------------------------------------------------------------------------  [Body ] -----  */
+
+
+section{
+    margin:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-container{
+    display: grid;
+    gap: 6rem;
+    grid-template-columns: auto auto auto;
+    @include mediaQuery(){
+        grid-template-columns: auto auto;
+        gap: 4rem;
+    }
+    @include mediaQuery(700px){
+        grid-template-columns: auto;
+        gap: 2rem;
+    }
+}
+
+
+.card{
+    scale: 0.9;
+    max-width:300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-image: linear-gradient( $color2,$color1-light) 30;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 10px 9px 10px -1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 10px 9px 10px -1px rgba(0,0,0,0.1);
+    box-shadow: 10px 9px 10px -1px rgba(0,0,0,0.1);
+
+    h3{
+        margin-top: 1rem;
+    }
+
+    img{
+        max-width: 100%;
+    }
+    p{
+        padding: 1rem;
+        color: rgba(0, 0, 0, 0.762);
+    }
+    button{
+        padding: 1rem;
+        margin: 5%;
+        width: 90%;
+        font-size: large;
+
+        background-color: $color1-light;
+        border: none;
+        border-radius: 4rem;
+        color: white;
+        cursor: pointer;
+        &:hover{
+            scale: 1.05;
+            background-color: $color2;
+            color: rgba(0, 0, 0, 0.503);
+        }
+    }
+}
