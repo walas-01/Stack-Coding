@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/04-AJAX-API rest/css/styles.css">
+    <title>Name Generator</title>
+</head>
+<body>
+
+    <section>
+        <form class="sect-element sect-left" action="">
+            <label for="inOrigen">Origen</label>
+            <select name="inOrigen" id="inOrigen">
+                <option value="">- Selecciona origen -</option>
+                <option value="argentina">Argentina</option>
+                <option value="spain">España</option>
+                <option value="mexico">Mexico</option>
+            </select>
+            <label for="inGenero">Genero:</label>
+            <select name="inGenero" id="inGenero">
+                <option value="">- Selecciona genero -</option>
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+            </select>
+            <label for="inCantidad">Cantidad de nombres:</label>
+            <input type="number" name="inCantidad" id="inCantidad" min="1" max="15">
+            <button type="submit">Generar</button>
+        </form>
+        <div class="sect-element sect-right">
+            <ul class="nombre-container">
+                <li class="nombre">Webber</li>
+                <li class="nombre">Walas</li>
+                <li class="nombre">Wilson</li>
+                <li class="nombre">Wes</li>
+            </ul>
+        </div>
+    </section>
+    
+    <script src="/04-AJAX-API rest/js/app.js"></script>
+</body>
+</html>
