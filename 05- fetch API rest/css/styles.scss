@@ -104,9 +104,13 @@ form{
 
 /*----------------------------------------- message -*/
 
-.message{
+.message-container{
   width: 80%;
   margin: 2rem;
+}
+
+.message{
+  width: 100%;
   color: white;
   background-color: $color3;
 
@@ -115,13 +119,12 @@ form{
   align-items: center;
   justify-content: space-between;
   h3{
-    margin: 2rem;
+    margin: 1rem;
     padding: 0.5rem;
     font-size: 25px;
     border-bottom: 2px solid #B8B8AA;
   }
   p{
-    margin:2rem;
+    margin-bottom:2rem;
   }
-
 }

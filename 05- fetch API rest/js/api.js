@@ -6,30 +6,26 @@ class API{
   
   async obtenerListaCryptoAPI(){
     try{
-      const res = await fetch(`https://min-api.cryptocompare.com/data/all/coinlist?api_key=${apiKey}`)
+      const res = await fetch(`https://min-api.cryptocompare.com/data/all/coinlist?api_key=${this.apiKey}`)
       const data = await res.json()
-      const coinList = data.Data
-
-      console.log(coinList)
-
-      let cleanCoinList = []
-
-      coinList.forEach((coin,i) => {
-        if(i%100===0){
-          cleanCoinList.push(coin)
-        }
-      });
-      
-      console.log(cleanCoinList)
-
+      return data
     }catch(err){
       console.log(err)
     }
   }
 
 
-  async obtenerCambio(){
+  async obtenerCambioAPI(moneda,crypto){
+    try{
+      const url =  `https://min-api.cryptocompare.com/data/price?fsym=${form.children[0].value}&tsyms=${form.children[1].value}`
 
+      const res = await fetch(url)
+      const data = await res.json()
+
+      return data
+    }catch(err){
+      console.log(err)
+    }
   }
 }
 
